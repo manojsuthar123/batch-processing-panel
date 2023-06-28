@@ -1,0 +1,42 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+/batch-ng/dist
+/batch-ng/tmp
+/batch-ng/out-tsc
+/batch-ng/bazel-out
+
+# Node
+/batch-ng/node_modules
+/batch-ngn/pm-debug.log
+/batch-ng/yarn-error.log
+
+# IDEs and editors
+/batch-ng/.idea/
+/batch-ng/.project
+/batch-ng/.classpath
+/batch-ng/.c9/
+/batch-ng/*.launch
+/batch-ng/.settings/
+/batch-ng/*.sublime-workspace
+
+# Visual Studio Code
+/batch-ng/.vscode/*
+/batch-ng/!.vscode/settings.json
+/batch-ng/!.vscode/tasks.json
+/batch-ng/!.vscode/launch.json
+/batch-ng/!.vscode/extensions.json
+/batch-ng/.history/*
+
+# Miscellaneous
+/batch-ng/.angular/cache
+/batch-ng/.sass-cache/
+/batch-ng/connect.lock
+/batch-ng/coverage
+/batch-ng/libpeerconnection.log
+/batch-ng/testem.log
+/batch-ng/typings
+
+# System files
+/batch-ng/.DS_Store
+/batch-ng/Thumbs.db

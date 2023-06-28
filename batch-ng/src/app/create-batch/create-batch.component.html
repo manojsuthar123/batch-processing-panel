@@ -1,0 +1,58 @@
+<div style="padding: 32px;margin: 32px;width: 600px;">
+    <form #createBatch="ngForm" novalidate (ngSubmit)="onSubmit()">
+
+        {{ batch | json}}
+
+        <div class="form-group">
+            <label for="name">Name </label>
+            <input class="form-control" type="text" id="name" name="name" [(ngModel)]="batch.name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="source">Source</label>
+            <select class="form-control" id="source" required [(ngModel)]="batch.dataSource" name="source">  
+                <option *ngFor="let ds of dataSource" [value]="ds">{{ds}}</option>
+            </select>
+        </div>
+
+        <div class="form-group" >
+            <label for="sourcedb">Source database URL </label>
+            <input [disabled]="true" class="form-control" type="text" id="sourcedb" name="sourcedb" >
+        </div>
+
+        <div class="form-group">
+            <label for="file">File </label>
+            <input class="form-control" type="file" id="file" name="file" [(ngModel)]="batch.file" required>
+        </div>
+
+        <div class="form-group">
+            <label for="destination">Destination</label>
+            <select class="form-control" id="destination" required [(ngModel)]="batch.dataDestination"
+                name="destination">
+                <option *ngFor="let ds of dataSource" [value]="ds">{{ds}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="destdb">Destination database URL </label>
+            <input [disabled]="true" class="form-control" type="text" id="destdb" name="destdb" >
+        </div>
+
+        <div class="form-group">
+            <label for="startat">Starts on </label>
+            <input class="form-control" type="datetime-local" id="startat" name="startat">
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="sendemail" id="sendemail" value="isSendMail">
+            <label class="form-check-label" for="sendemail">
+                Send me mail after batch completed
+            </label>
+        </div>
+
+        <div>
+            <button class="btn btn-primary" type="submit" id="submit" name="submit"
+                [disabled]="!createBatch.form.valid">Save</button>
+        </div>
+    </form>
+</div>
