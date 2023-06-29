@@ -11,10 +11,11 @@ export class HomeComponent {
   batchName = 'Spring Batch';
   runningCount = 3;
   completedCount = 3;
-  batches:any = [];
+  batches:Batch[] = [];
 
   constructor(batchService: BatchService) {
     this.batches = batchService.getBatchList();
+    this.runningCount = this.batches.filter((batch) => batch.isRunning == true).length;
   }
 
 }

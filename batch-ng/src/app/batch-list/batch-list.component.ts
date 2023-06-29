@@ -10,7 +10,7 @@ export class BatchListComponent {
   @Input('batch') batch: Batch;
 
   constructor() {
-    this.batch = new Batch(2, "csv-to-kafka","file.csv","db2", "csv", false,"failed",new Date().toString(),new Date().toString());
+    this.batch = new Batch();
     console.log(this.batch)
   }
 }

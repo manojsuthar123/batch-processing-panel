@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Batch } from '../model/batch';
 import { BatchService } from '../service/batch-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Datasource } from '../model/datasource';
 
 @Component({
   selector: 'app-create-batch',
@@ -11,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./create-batch.component.css']
 })
 export class CreateBatchComponent implements OnInit {
-  dataSource = ['Database', 'CSV', 'Kafka']
+  dataSourceEnum = Datasource;
   batch: Batch;
   batchId: any;
 
@@ -28,7 +29,7 @@ export class CreateBatchComponent implements OnInit {
 
   onSubmit() {
     this.batchService.createBatch(this.batch);
-    this._snackBar.open('Batch Created!', 'OK');
+    this._snackBar.open('Batch saved!', 'OK');
   }
 
 }
