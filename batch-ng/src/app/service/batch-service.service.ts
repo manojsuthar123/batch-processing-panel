@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Batch } from '../model/batch';
-import { Datasource } from '../model/datasource';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { ApiConstant } from '../model/constant/api-constant';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,28 +10,31 @@ import { Datasource } from '../model/datasource';
 export class BatchService {
   batches: Batch[] = [];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getBatchList() {
-    this.batches = [
-      new Batch(1, "test1"),
-      new Batch(2, "test2")
-    ]
-    return this.batches;
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+
+  getBatchList() : Observable<Batch[]>{
+    return this.http.get<Batch[]>(ApiConstant.BATCH, this.httpOptions)
   }
 
-  getBatchById(id: number) {
-    return this.batches[id - 1];
+  getBatchById(id: number) : Observable<Batch>{
+    return this.http.get<Batch>(ApiConstant.BATCH+"/"+id, this.httpOptions)
   }
 
-  createBatch(batch: Batch) {
-    if (batch) {
-      this.batches.push(batch);
-    }
+  deleteBatchById(id: number) : Observable<string>{
+    return this.http.delete<string>(ApiConstant.BATCH+"/"+id, this.httpOptions)
   }
 
-  deleteBatch() {
-
+  createBatch(batch: Batch) : Observable<Batch> {
+    return this.http.post<Batch>(ApiConstant.BATCH, batch, this.httpOptions);
   }
 
+  errorHandler(){
+
+  }
 }

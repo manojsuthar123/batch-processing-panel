@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { CreateBatchComponent } from './create-batch/create-batch.component';
-import { HomeComponent } from './home/home.component';
+import { CreateBatchComponent } from './component/create-batch/create-batch.component';
+import { HomeComponent } from './component/home/home.component';
 
 const routes: Routes = [
   {

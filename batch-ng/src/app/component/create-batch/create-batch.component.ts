@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms'
-import { ActivatedRoute } from '@angular/router';
-import { Batch } from '../model/batch';
-import { BatchService } from '../service/batch-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Datasource } from '../model/datasource';
+import { ActivatedRoute } from '@angular/router';
+import { Batch } from 'src/app/model/batch';
+import { Datasource } from 'src/app/model/datasource';
+import { BatchService } from 'src/app/service/batch-service.service';
+
 
 @Component({
   selector: 'app-create-batch',
@@ -23,13 +24,15 @@ export class CreateBatchComponent implements OnInit {
   ngOnInit(): void {
     if (this.activatedRoute.snapshot.paramMap.get('id')) {
       this.batchId = this.activatedRoute.snapshot.paramMap.get('id');
-      this.batch = this.batchService.getBatchById(parseInt(this.batchId));
+      this.batchService.getBatchById(parseInt(this.batchId)).subscribe(data => {this.batch = data});
     }
   }
 
   onSubmit() {
-    this.batchService.createBatch(this.batch);
-    this._snackBar.open('Batch saved!', 'OK');
+    this.batchService.createBatch(this.batch).subscribe({
+      error: (err) => { console.error(err) },
+      complete: () => { this._snackBar.open('Batch saved!', 'OK') },
+    });
   }
 
 }

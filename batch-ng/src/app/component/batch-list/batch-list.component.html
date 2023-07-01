@@ -11,6 +11,7 @@
             <button mat-button>Run</button>
             <button mat-button>View</button>
             <button mat-button [routerLink]="[batch.id+'/edit']">Edit</button>
+            <button mat-button (click)="deleteBatch(batch.id)">Delete</button>
           </mat-card-actions>
     </mat-card>
 </div>
